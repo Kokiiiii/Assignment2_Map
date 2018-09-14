@@ -6,15 +6,20 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
     <script src='./data.js'></script>
+    <script src='./data2.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0px; left:0px; bottom:0px; width:100%; }
+        #map { position:absolute; top:50px; left:400px; float: left}
+        #map2 { position:absolute; top:50px; left:400px; margin-left: 50%}
+        
     </style>
 </head>
 <body>
 
 <div id='map'></div>
+<div id='map2'></div>
+    
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoia29raWlpaWkiLCJhIjoiY2pseHZjeG0yMGY4MTNxbjh1ZDVzdG96NCJ9.eDyz5Sx3ONed7FZ0alczuw';
 var map = new mapboxgl.Map({
@@ -61,6 +66,52 @@ map.on('load', function() {
             }
     });
 });
+    
+var maptwo = new mapboxgl.Map({
+    container: 'map2', // container id
+    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+    center: [142, -30], // starting position [lng, lat]
+    zoom: 5,
+    pitch: 40,
+    bearing: 20,
+});
+maptwo.on('load', function() {
+    maptwo.addLayer({
+        "id": "data2",
+        "type": "fill-extrusion",
+        "source": {
+        	'type': 'geojson',
+        	'data': data2
+        },
+           'paint': {
+                'fill-extrusion-color' : {
+                    'property': 'F_Pro_Per',
+                    "stops":[
+                    	[0, '#CCFFCC'],
+                    	[0.2,'#99FF99'],
+                        [0.4,'#66FF66'],
+                        [0.6,'#00FF00'],
+                        [0.8,'#00CC00'],
+                        [1,'#006600']
+                    ]
+                    
+                },
+                'fill-extrusion-height' : {
+                    'property': 'F_Pro',
+                    "stops":[
+                    	[0, 0],
+                    	[39, 3900],
+                        [78, 7800],
+                        [117, 11700],
+                        [156, 15600],
+                        [195,19500]
+                        ]
+                },
+                 'fill-extrusion-opacity': 0.9
+            }
+    });
+});
+    
 </script>
 
 </body>

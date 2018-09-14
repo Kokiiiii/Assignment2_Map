@@ -6,7 +6,7 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
     <script src='./data.js'></script>
-    <script src='./data2.js'></script>
+    <script src='./data3.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
@@ -77,11 +77,11 @@ var maptwo = new mapboxgl.Map({
 });
 maptwo.on('load', function() {
     maptwo.addLayer({
-        "id": "data2",
+        "id": "data3",
         "type": "fill-extrusion",
         "source": {
         	'type': 'geojson',
-        	'data': data2
+        	'data': data3
         },
            'paint': {
                 'fill-extrusion-color' : {

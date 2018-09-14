@@ -67,21 +67,21 @@ map.on('load', function() {
     });
 });
     
-var maptwo = new mapboxgl.Map({
-    container: 'map2', // container id
+var map = new mapboxgl.Map({
+    container: 'map', // container id
     style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
     center: [142, -30], // starting position [lng, lat]
     zoom: 5,
     pitch: 40,
     bearing: 20,
 });
-maptwo.on('load', function() {
+map.on('load', function() {
     maptwo.addLayer({
-        "id": "data2",
+        "id": "data",
         "type": "fill-extrusion",
         "source": {
         	'type': 'geojson',
-        	'data': data2
+        	'data': data
         },
            'paint': {
                 'fill-extrusion-color' : {
